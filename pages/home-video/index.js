@@ -1,25 +1,36 @@
 // pages/home-video/index.js
+
+import { getTopMv } from '../../service/api_video'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    topMvs: [1, 2, 3]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: async function (options) {
+    try {
+      console.log("onLoad")
+      const res = await getTopMv(0);
+      console.log("res: ", res);
+      this.setData({ topMvs: res.data });
+      console.log("this.topMvs: ", this.data.topMvs)
+    } catch (error) {
+      // console.log("error: ", error)
+    }
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    console.log("onReady")
   },
 
   /**
